@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on Jiahua Blog</title>
+    <link>https://XingJH-1998.github.io/posts/</link>
+    <description>Recent content in Posts on Jiahua Blog</description>
+    <image>
+      <title>Jiahua Blog</title>
+      <url>https://XingJH-1998.github.io/images/papermod-cover.png</url>
+      <link>https://XingJH-1998.github.io/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.139.2</generator>
+    <language>en-us</language>
+    <copyright>©Jiahua Xing 2025</copyright>
+    <lastBuildDate>Thu, 02 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://XingJH-1998.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test post</title>
+      <link>https://XingJH-1998.github.io/posts/firstpost/</link>
+      <pubDate>Thu, 02 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://XingJH-1998.github.io/posts/firstpost/</guid>
+      <description>First post test</description>
+    </item>
+  </channel>
+</rss>
