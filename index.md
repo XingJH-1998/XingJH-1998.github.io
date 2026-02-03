@@ -19,18 +19,22 @@ title:
 
   <!-- 第二部分：文章列表 (Posts) - 我把它移到了这里 -->
   <h2 class="post-list-heading">Latest Trips</h2>
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-      </li>
-    {% endfor %}
-  </ul>
+    <ul class="post-list">
+      <!-- 注意这里加了 limit:3 -->
+      {% for post in site.posts limit:1 %}
+        <li>
+          <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+          <h3>
+            <a class="post-link" href="{{ post.url | relative_url }}">
+              {{ post.title | escape }}
+            </a>
+          </h3>
+        </li>
+      {% endfor %}
+    </ul>
+  
+    <!-- 加一个按钮引导大家去Blog页看更多 -->
+    <p><a href="/blog/">View all posts &rarr;</a></p>
 
   <!-- 第三部分：足迹地图 (Footprint) - 现在它在下面了 -->
   <h2>Footprint</h2>
