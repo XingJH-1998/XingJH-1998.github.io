@@ -2,8 +2,6 @@ title: Jiahua's Birding
 description: 🐦
 theme: minima
 plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
 header_pages:
   - about.md
   - portfolio.md

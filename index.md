@@ -10,9 +10,6 @@ This is where I record my birding.
 *Shot in Medog, April 2025*
 
 
-## Recent posts
-
-
 ## Footprint
 
 
