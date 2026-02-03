@@ -20,10 +20,9 @@ title:
   <!-- 第二部分：文章列表 (Posts) - 我把它移到了这里 -->
   <h2 class="post-list-heading">Latest Trips</h2>
     <ul class="post-list">
-      <!-- 注意这里加了 limit:3 -->
+      <!-- 注意这里加了 limit:1 -->
       {% for post in site.posts limit:1 %}
         <li>
-          <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
           <h3>
             <a class="post-link" href="{{ post.url | relative_url }}">
               {{ post.title | escape }}
