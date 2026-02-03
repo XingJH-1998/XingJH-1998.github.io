@@ -18,7 +18,7 @@ title:
   </p>
 
   <!-- 第二部分：文章列表 (Posts) - 我把它移到了这里 -->
-  <h2 class="post-list-heading">Latest Trips</h2>
+  <h2 class="post-list-heading">Latest Trip</h2>
     <ul class="post-list">
       <!-- 注意这里加了 limit:1 -->
       {% for post in site.posts limit:1 %}
