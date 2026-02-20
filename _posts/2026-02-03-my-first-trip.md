@@ -15,12 +15,16 @@ A typical winter birding trip is a 8-days itinerary, covering Hailar and places 
 There're many wintering Snowy owl individuals in the open habitat near Hailar. Some local people will try to feed them domestic-fed hamsters 10 a day in a continous time section to make some individuals "reliable" to bird photographers (and birders). I bet 90% of the close and in-flight photo come from this kind of work. Luckily we had a proper wild pair of Snowy owls. Male was of a good view in a nice roosting and sleepy status, we approached it slowly to about 100 meters but didn't have the luck for a close female, which flew above the steppe in around 1km. Still a good view to me!
 
 ![snow-owl-habitat](/images/Hailar-post/snowy-owl-habitat.jpg)  
+  
+  
 ![snowy-owl](/images/Hailar-post/snowy-owl.jpg)  
 
 Snowy bunting is another targets here. Usually we can get them on our way to the owl. They're nice, cute and legless birds that move on the ground like an agile snail.  
-Besides these 2 targets, there's not much other bird surrounding. Mongolian Lark and Horned Lark can be found near any kind of pasture. House sparrow sometimes shows in the flocks of Tree sparrow near buildings. Carrion crow and Magpie are the defauld Corvidae here.
+Besides these 2 targets, there's not much other bird surrounding. Mongolian Lark and Horned Lark can be found near any kind of pasture. House sparrow sometimes shows in the flocks of Tree sparrow near buildings. Carrion crow and Magpie are the default Corvidae here.
   
 ![snow-bunting](/images/Hailar-post/snow-bunting.jpg)  
+
+
 
 
 
