@@ -1,0 +1,28 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-intro">
+        <img class="footer-mark" src="{{ '/images/bird.jpg' | relative_url }}" alt="" width="72" height="72" loading="lazy">
+        <p class="eyebrow eyebrow--light">Stay in touch</p>
+        <h2>Good birding.</h2>
+        <p class="footer-note">If you are planning a trip, comparing notes, or just want to talk about birds, my inbox is always open.</p>
+      </div>
+
+      <div class="footer-actions">
+        <a class="footer-mail" href="mailto:{{ site.email }}">{{ site.email }} <span aria-hidden="true">&#8599;</span></a>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="{{ '/' | relative_url }}">Home</a>
+          <a href="{{ '/blog/' | relative_url }}">Journal</a>
+          <a href="{{ '/about/' | relative_url }}">About</a>
+          <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+        </nav>
+        <a class="footer-social" href="https://github.com/XingJH-1998" target="_blank" rel="noopener">GitHub <span aria-hidden="true">&#8599;</span></a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; {{ site.time | date: '%Y' }} Jiahua Xing</span>
+      <span>Birding journal &middot; China</span>
+    </div>
+  </div>
+</footer>

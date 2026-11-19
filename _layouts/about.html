@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+<header class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">{{ page.eyebrow | default: "About" }}</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}<p class="lede">{{ page.description }}</p>{% endif %}
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap about-grid">
+    <aside class="about-aside" data-reveal>
+      {% if page.portrait %}
+        <figure class="about-portrait">
+          <img src="{{ page.portrait | relative_url }}"
+            {% if page.portrait_sm %}srcset="{{ page.portrait_sm | relative_url }} 640w, {{ page.portrait | relative_url }} 1200w" sizes="(max-width: 900px) 92vw, 34vw"{% endif %}
+            alt="{{ page.portrait_alt | default: page.title | escape }}" width="1200" height="1200" loading="lazy">
+          {% if page.portrait_caption %}<figcaption>{{ page.portrait_caption }}</figcaption>{% endif %}
+        </figure>
+      {% endif %}
+
+      {% if page.facts %}
+        <ul class="about-facts">
+          {% for fact in page.facts %}
+            <li><span>{{ fact.label }}</span><b>{{ fact.value }}</b></li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </aside>
+
+    <div class="prose" data-reveal>
+      {{ content }}
+    </div>
+  </div>
+</section>

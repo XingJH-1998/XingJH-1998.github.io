@@ -1,0 +1,44 @@
+---
+layout: default
+---
+
+<header class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">{{ page.eyebrow | default: "Journal" }}</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}<p class="lede">{{ page.description }}</p>{% endif %}
+  </div>
+</header>
+
+<section class="section section--topless">
+  <div class="wrap">
+    {% if site.posts.size > 0 %}
+      <div class="note-list">
+        {% for post in site.posts %}
+          <article class="note-row" data-reveal>
+            <a class="note-row__media" href="{{ post.url | relative_url }}" tabindex="-1">
+              {% if post.cover %}
+                <img src="{{ post.cover | relative_url }}"
+                  {% if post.cover_sm %}srcset="{{ post.cover_sm | relative_url }} 900w, {{ post.cover | relative_url }} 1800w" sizes="(max-width: 900px) 92vw, 340px"{% endif %}
+                  alt="" width="900" height="675" loading="lazy">
+              {% endif %}
+            </a>
+
+            <div class="note-row__body">
+              <span class="note-row__index" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+              <p class="meta-line">
+                <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+                {% if post.location %}<span>{{ post.location }}</span>{% endif %}
+              </p>
+              <h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+              <p>{{ post.excerpt | strip_html | normalize_whitespace | truncatewords: 40 }}</p>
+              <a class="text-link" href="{{ post.url | relative_url }}">Read the notes <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="lede">The journal is empty for now. The next trip will change that.</p>
+    {% endif %}
+  </div>
+</section>

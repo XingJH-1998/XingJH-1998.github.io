@@ -1,10 +1,45 @@
+# ---------------------------------------------------------------------------
+# Jiahua's Birding — site configuration
+# ---------------------------------------------------------------------------
 title: Jiahua's Birding
-description: 
-theme: minima
+tagline: Field notes from a life spent looking up
+description: Birding journal and trip notes by Jiahua Xing — birds, photographs and the places they pull me toward.
+author:
+  name: Jiahua Xing
+  email: xingjiahuai@gmail.com
+email: xingjiahuai@gmail.com
+logo: /images/bird.jpg
+
+url: "https://xingjh-1998.github.io"
+baseurl: ""
+lang: en
+timezone: Asia/Shanghai
+
+# --- Plugins (all supported by GitHub Pages) -------------------------------
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-header_pages:
-  - blog.md
-  - about.md
-  - portflio.mds
+  - jekyll-sitemap
+
+feed:
+  path: feed.xml
+
+# --- Build -----------------------------------------------------------------
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .home
+  - .preview
+  - .DS_Store
+  - .Rhistory
+  - .gitignore
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post

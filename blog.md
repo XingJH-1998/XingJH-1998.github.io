@@ -1,18 +1,8 @@
 ---
-layout: page
-title: Blog
+layout: blog
+title: Field Notes
+eyebrow: Journal
 permalink: /blog/
+description: "Trip reports and photographs from the field — the birds, the places, and the stories between the ticks."
+image: /images/Hailar-post/sundog.jpg
 ---
-
-<ul class="post-list">
-  {% for post in site.posts %}
-    <li>
-      <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-      <h3>
-        <a class="post-link" href="{{ post.url | relative_url }}">
-          {{ post.title | escape }}
-        </a>
-      </h3>
-    </li>
-  {% endfor %}
-</ul>

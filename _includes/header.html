@@ -1,0 +1,17 @@
+<header class="site-header {% if page.layout == 'home' %}site-header--overlay{% else %}site-header--solid{% endif %}">
+  <div class="site-header__inner">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="Jiahua's Birding — home">
+      <img class="brand__mark" src="{{ '/images/bird.jpg' | relative_url }}" alt="" width="84" height="84">
+      <span class="brand__text">
+        <span class="brand__name">Jiahua Xing</span>
+        <span class="brand__tag">Birding journal</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}aria-current="page"{% endif %}>Home</a>
+      <a href="{{ '/blog/' | relative_url }}" {% if page.url == '/blog/' or page.layout == 'post' %}aria-current="page"{% endif %}>Journal</a>
+      <a href="{{ '/about/' | relative_url }}" {% if page.url == '/about/' %}aria-current="page"{% endif %}>About</a>
+    </nav>
+  </div>
+</header>

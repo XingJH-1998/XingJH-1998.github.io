@@ -1,0 +1,75 @@
+---
+layout: default
+---
+
+<article class="post">
+  <header class="post-head">
+    <div class="wrap-narrow">
+      <p class="eyebrow">{% if page.kicker %}{{ page.kicker }}{% elsif page.categories %}{{ page.categories | join: " &middot; " }}{% else %}Field notes{% endif %}</p>
+      <h1>{{ page.title }}</h1>
+      {% if page.excerpt %}<p class="lede">{{ page.excerpt | strip_html }}</p>{% endif %}
+
+      <div class="post-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+        {% if page.location %}<span>{{ page.location }}</span>{% endif %}
+        {% assign words = content | strip_html | number_of_words %}
+        <span>{{ words | divided_by: 200 | plus: 1 }} min read</span>
+      </div>
+    </div>
+  </header>
+
+  {% if page.cover %}
+    <figure class="post-cover">
+      <img src="{{ page.cover | relative_url }}"
+        {% if page.cover_sm %}srcset="{{ page.cover_sm | relative_url }} 900w, {{ page.cover | relative_url }} 1800w" sizes="(max-width: 1200px) 100vw, 1120px"{% endif %}
+        alt="{{ page.cover_alt | default: page.title | escape }}" width="1800" height="1350" fetchpriority="high">
+      {% if page.cover_caption %}<figcaption>{{ page.cover_caption }}</figcaption>{% endif %}
+    </figure>
+  {% endif %}
+
+  <div class="wrap-narrow prose post-body">
+    {{ content }}
+  </div>
+
+  {% if page.trip %}
+    <aside class="trip-panel" aria-label="Trip at a glance">
+      <div class="trip-panel__inner">
+        {% for item in page.trip %}
+          <div class="trip-panel__item">
+            <span>{{ item.label }}</span>
+            <b>{{ item.value }}</b>
+          </div>
+        {% endfor %}
+      </div>
+    </aside>
+  {% endif %}
+
+  <footer class="wrap-narrow post-foot">
+    {% if page.categories %}
+      <div class="post-foot__tags">
+        <span class="post-foot__label">Filed under</span>
+        {% for category in page.categories %}
+          <span class="tag">{{ category }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+    <a class="text-link" href="{{ '/blog/' | relative_url }}"><span aria-hidden="true">&larr;</span> All field notes</a>
+  </footer>
+</article>
+
+{% if page.previous or page.next %}
+  <nav class="post-nav wrap" aria-label="More field notes">
+    {% if page.previous %}
+      <a class="post-nav__item" href="{{ page.previous.url | relative_url }}">
+        <span>Previous trip</span>
+        <strong>{{ page.previous.title }}</strong>
+      </a>
+    {% endif %}
+    {% if page.next %}
+      <a class="post-nav__item post-nav__item--next" href="{{ page.next.url | relative_url }}">
+        <span>Next trip</span>
+        <strong>{{ page.next.title }}</strong>
+      </a>
+    {% endif %}
+  </nav>
+{% endif %}

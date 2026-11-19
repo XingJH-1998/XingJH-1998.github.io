@@ -2,30 +2,61 @@
 layout: post
 title: "Hailar, Inner Mongolia"
 date: 2026-02-03
-categories: birding trip
+categories: [birding, trip]
+kicker: "Birding · Inner Mongolia"
+location: "Hailar & Urqihan, Inner Mongolia"
+season: "January 2026"
+cover: /images/Hailar-post/sundog.jpg
+cover_sm: /images/Hailar-post/sundog-sm.jpg
+cover_alt: "A sun dog beside the low winter sun over the Hailar steppe"
+cover_caption: "Winter light on the Hailar steppe, January 2026."
+image: /images/Hailar-post/sundog.jpg
+description: "A winter trip to Hailar and Urqihan chasing Snowy Owl and Snow Bunting — six lifers, one wild pair of owls, and a China list past 1,150."
+excerpt: "Chasing Snowy Owl and Snow Bunting across the winter steppe of Inner Mongolia — six lifers, one wild pair of owls, and a China list past 1,150."
+trip:
+  - label: Where
+    value: "Hailar & Urqihan"
+  - label: When
+    value: "January 2026"
+  - label: Targets
+    value: "Snowy Owl · Snow Bunting"
+  - label: New lifers
+    value: "6"
 ---
 
-Inner Mongolia has long been my winter birding target site, boosting by its unique winter birds and resident owls. Due to many reasons it's not until Jan 2026 can I spare some time and money to do this trip, giving me 6 easy (kind of) lifers that has long been my most wanted northern birds and excess a small monument in my China  list of over 1150.  
-![sundog](/images/Hailar-post/sundog.jpg)
+Inner Mongolia has long been my winter birding target, drawn by its unique winter birds and resident owls. For many reasons, it wasn't until January 2026 that I could spare the time and money for the trip — and it gave me six easy (kind of) lifers, all long-wanted northern birds, pushing my China list past 1,150.
 
-All the birding trips covering this area need to contact a local guide Mr. Zhang, who's long been a sharp local hunter but not has tranformed to a brilliant local birding guide. He can help arrange all the logistics, guiding and transportations from Hailar City. What we need to do is just to buy the return flight tickets to Hailar, he can handle all the others. 
+Any birding trip in this area means contacting a local guide, Mr. Zhang — long a sharp local hunter, now a brilliant local birding guide. He arranges the logistics, guiding and transport from Hailar, so all we had to do was buy return flights; he handled everything else.
 
-A typical winter birding trip is a 8-days itinerary, covering Hailar and places in and around Urqihan village. The trip begins at steppe near Hailar, chasing the most famous wintering star Snowy Owl. This species is extremely well-known even for non-birders thanks to Hedwig in Harry Potter movies. 
+A typical winter trip runs eight days, covering Hailar and the country in and around Urqihan village. It begins on the steppe near Hailar, chasing the most famous wintering star: Snowy Owl. Even non-birders know this species, thanks to Hedwig in the Harry Potter films.
 
-There're many wintering Snowy owl individuals in the open habitat near Hailar. Some local people will try to feed them domestic-fed hamsters 10 a day in a continous time section to make some individuals "reliable" to bird photographers (and birders). I bet 90% of the close and in-flight photo come from this kind of work. Luckily we had a proper wild pair of Snowy owls. Male was of a good view in a nice roosting and sleepy status, we approached it slowly to about 100 meters but didn't have the luck for a close female, which flew above the steppe in around 1km. Still a good view to me!
+<figure>
+  <img src="/images/Hailar-post/snowy-owl-habitat.jpg"
+    srcset="/images/Hailar-post/snowy-owl-habitat-sm.jpg 900w, /images/Hailar-post/snowy-owl-habitat.jpg 1800w"
+    sizes="(max-width: 820px) 92vw, 720px"
+    alt="An immense flat snow-covered steppe under a deep blue sky"
+    width="1800" height="1350" loading="lazy">
+  <figcaption>Snowy Owl country: flat, wind-scoured and impossibly wide.</figcaption>
+</figure>
 
-![snow-owl-habitat](/images/Hailar-post/snowy-owl-habitat.jpg)  
-  
-  
-![snowy-owl](/images/Hailar-post/snowy-owl.jpg)  
+Many Snowy Owls winter in the open habitat near Hailar. Some local people feed them domestic hamsters — ten a day over a continuous period — to make certain individuals “reliable” for photographers and birders alike. I'd bet 90% of the close-up and in-flight photos of this species come from that kind of work. Luckily, we had a genuinely wild pair. The male gave a good view in a nice, sleepy roost, and we approached slowly to about 100 metres; we didn't have the luck of a close female, which flew over the steppe around a kilometre away. Still a great view to me!
 
-Snowy bunting is another targets here. Usually we can get them on our way to the owl. They're nice, cute and legless birds that move on the ground like an agile snail.  
-Besides these 2 targets, there's not much other bird surrounding. Mongolian Lark and Horned Lark can be found near any kind of pasture. House sparrow sometimes shows in the flocks of Tree sparrow near buildings. Carrion crow and Magpie are the default Corvidae here.
-  
-![snow-bunting](/images/Hailar-post/snow-bunting.jpg)  
+<figure>
+  <img src="/images/Hailar-post/snowy-owl.jpg"
+    srcset="/images/Hailar-post/snowy-owl-sm.jpg 900w, /images/Hailar-post/snowy-owl.jpg 1800w"
+    sizes="(max-width: 820px) 92vw, 720px"
+    alt="A white male Snowy Owl resting on a snowy ridge"
+    width="1800" height="1200" loading="lazy">
+  <figcaption>The wild male — sleepy, distant, and worth every metre of the slow approach.</figcaption>
+</figure>
 
+Snow Bunting is the other target here, and usually we picked them up on the way to the owl. They're nice, cute, apparently legless birds that move over the ground like agile snails. Beyond these two targets, there isn't much else around: Mongolian Lark and Horned Lark can be found near any kind of pasture; House Sparrow sometimes appears among the Tree Sparrow flocks near buildings; and Carrion Crow and Magpie are the default corvids here.
 
-
-
-
-
+<figure>
+  <img src="/images/Hailar-post/snow-bunting.jpg"
+    srcset="/images/Hailar-post/snow-bunting-sm.jpg 900w, /images/Hailar-post/snow-bunting.jpg 1800w"
+    sizes="(max-width: 820px) 92vw, 720px"
+    alt="Two Snow Buntings feeding on a snow-covered ridge"
+    width="1800" height="1200" loading="lazy">
+  <figcaption>Snow Buntings, feeding where the wind has cleared the snow.</figcaption>
+</figure>
