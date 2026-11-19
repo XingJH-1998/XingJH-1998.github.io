@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build province-level KML layers (species-richness tiers) from eBird + DataV boundaries.
+"""Build province-level KML tiers and a single WKT CSV from eBird + DataV boundaries.
 
 Usage:
     python3 build_province_kml.py "/path/to/MyEBirdData.csv" china-provinces.json
@@ -15,6 +15,16 @@ import json
 from pathlib import Path
 from collections import defaultdict
 from xml.sax.saxutils import escape
+
+try:  # Optional: used to clean self-intersecting WKT polygons for My Maps.
+    import shapely
+    from shapely import wkt as shapely_wkt
+    from shapely.geometry import shape as shapely_shape
+    from shapely.ops import unary_union
+    from shapely.validation import make_valid
+    HAS_SHAPELY = True
+except ImportError:  # pragma: no cover
+    HAS_SHAPELY = False
 
 PROVINCE_NAMES = {
     110000: ("Beijing", "北京"), 120000: ("Tianjin", "天津"), 130000: ("Hebei", "河北"),
@@ -94,6 +104,51 @@ def geometry_xml(geometry) -> str:
     if geometry["type"] == "MultiPolygon":
         return "<MultiGeometry>" + "".join(polygon_xml(p) for p in geometry["coordinates"]) + "</MultiGeometry>"
     return ""
+
+
+def wkt_ring(ring) -> str:
+    points = list(ring)
+    if points[0] != points[-1]:
+        points.append(points[0])
+    return "(" + ", ".join(f"{lon:.5f} {lat:.5f}" for lon, lat in points) + ")"
+
+
+def wkt_polygon(rings) -> str:
+    return "(" + ", ".join(wkt_ring(ring) for ring in rings) + ")"
+
+
+def wkt_geometry(geometry) -> str:
+    if geometry["type"] == "Polygon":
+        return "POLYGON " + wkt_polygon(geometry["coordinates"])
+    if geometry["type"] == "MultiPolygon":
+        return "MULTIPOLYGON (" + ", ".join(wkt_polygon(poly) for poly in geometry["coordinates"]) + ")"
+    return ""
+
+
+def wkt_for(geometry) -> str:
+    """Return a valid WKT polygon, repairing shared-border self-intersections when possible."""
+    if HAS_SHAPELY:
+        geom = shapely_shape(geometry)
+        geom = make_valid(geom)
+        if geom.geom_type not in ("Polygon", "MultiPolygon"):
+            polygons = [part for part in getattr(geom, "geoms", []) if part.geom_type in ("Polygon", "MultiPolygon")]
+            if polygons:
+                geom = unary_union(polygons)
+        if not geom.is_empty and geom.geom_type in ("Polygon", "MultiPolygon"):
+            return shapely_wkt.dumps(geom, rounding_precision=5, trim=True)
+    return wkt_geometry(geometry)
+
+
+def species_bucket(species: int) -> str:
+    if species >= 400:
+        return "400+"
+    if species >= 250:
+        return "250-399"
+    if species >= 100:
+        return "100-249"
+    if species > 0:
+        return "Under 100"
+    return "No data"
 
 
 def style_xml(style_id: str, color: str, alpha: str) -> str:
@@ -190,6 +245,39 @@ def main() -> None:
         document("China provinces · birding richness", styles + "".join(marks)), encoding="utf-8"
     )
     print(f"  china-provinces-all.kml: {len(features)} provinces")
+
+    # One-row-per-province CSV with WKT geometry: a single My Maps layer,
+    # styled by the "Species Bucket" column. More reliable than KML colours.
+    wkt_rows = []
+    for feature in features:
+        adcode = feature["properties"]["adcode"]
+        en, zh = PROVINCE_NAMES[adcode]
+        data = stats.get(f"CN-{adcode // 10000:02d}")
+        species = len(data["species"]) if data else 0
+        sites = len(data["sites"]) if data else 0
+        checklists = len(data["checklists"]) if data else 0
+        description = (f"{species} species · {sites} sites · {checklists} checklists"
+                       if species else "No eBird records in this export")
+        wkt_rows.append({
+            "Name": f"{en} {zh}",
+            "Description": description,
+            "WKT": wkt_for(feature["geometry"]),
+            "Level": "Province",
+            "Species": species,
+            "Sites": sites,
+            "Checklists": checklists,
+            "Species Bucket": species_bucket(species),
+        })
+    wkt_rows.sort(key=lambda row: (-row["Species"], row["Name"]))
+    wkt_path = out / "mymaps-china-provinces-wkt.csv"
+    with wkt_path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=[
+            "Name", "Description", "WKT", "Level", "Species", "Sites",
+            "Checklists", "Species Bucket",
+        ])
+        writer.writeheader()
+        writer.writerows(wkt_rows)
+    print(f"  {wkt_path.name}: {len(wkt_rows)} provinces ({wkt_path.stat().st_size / 1024:.0f} KB)")
 
 
 if __name__ == "__main__":
