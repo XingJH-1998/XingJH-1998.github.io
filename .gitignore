@@ -20,3 +20,6 @@ Gemfile.lock
 
 # Local eBird exports / map layers (precise coordinates)
 map-data/
+
+# Python
+__pycache__/
