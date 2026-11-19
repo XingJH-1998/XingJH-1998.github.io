@@ -17,3 +17,6 @@ Gemfile.lock
 .Rhistory
 .RData
 .preview/
+
+# Local eBird exports / map layers (precise coordinates)
+map-data/

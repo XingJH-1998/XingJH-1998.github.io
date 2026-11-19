@@ -84,3 +84,16 @@ Then open http://localhost:4000.
 ## Deployment
 
 Commit the changes and push to `main`. GitHub Pages rebuilds the site in a minute or two.
+
+## Footprint map data
+
+`tools/ebird_to_mymaps.py` converts an eBird `MyEBirdData.csv` export into
+Google My Maps-ready layers (one point per eBird location, with visit counts,
+species totals and first/latest dates). Output goes to `map-data/`, which is
+gitignored because it contains precise, potentially sensitive locations.
+
+```bash
+python3 tools/ebird_to_mymaps.py "/path/to/MyEBirdData.csv" --out map-data
+```
+
+See `map-data/README.md` for the recommended layer setup and import steps.
