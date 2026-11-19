@@ -96,4 +96,12 @@ gitignored because it contains precise, potentially sensitive locations.
 python3 tools/ebird_to_mymaps.py "/path/to/MyEBirdData.csv" --out map-data
 ```
 
+For the province-level choropleth, `tools/build_province_kml.py` combines the
+export with a China province GeoJSON (`china-provinces.json` from DataV) and
+writes five species-richness KML tiers plus a combined file:
+
+```bash
+python3 tools/build_province_kml.py "/path/to/MyEBirdData.csv" map-data/china-provinces.json
+```
+
 See `map-data/README.md` for the recommended layer setup and import steps.

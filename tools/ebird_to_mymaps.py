@@ -195,6 +195,8 @@ def main() -> None:
 
     # Small enough to use on a public page after a manual privacy review.
     write_csv(out / "sites-curated.csv", [r for r in rows if r["Checklists"] >= 3])
+    # Optional detail layer: regular patches only.
+    write_csv(out / "sites-top.csv", [r for r in rows if r["Checklists"] >= 5])
 
     print("Summary layers:")
     provinces = defaultdict(lambda: {"coords": [], "checklists": 0, "species": set()})
@@ -226,6 +228,44 @@ def main() -> None:
     province_rows.sort(key=lambda r: -r["Species"])
     write_csv(out / "provinces-china.csv", province_rows)
 
+    # Seven macro-regions: the cleanest overview if provinces still feel busy.
+    region_names = {
+        "North": "North China (华北)",
+        "Northeast": "Northeast China (东北)",
+        "East": "East China (华东)",
+        "Central": "Central China (华中)",
+        "South": "South China (华南)",
+        "Southwest": "Southwest China (西南)",
+        "Northwest": "Northwest China (西北)",
+    }
+    regions = defaultdict(lambda: {"coords": [], "checklists": 0, "species": set(), "sites": 0})
+    for r in rows:
+        if r["_country"] != "CN":
+            continue
+        reg = regions[r["_macro"]]
+        reg["coords"].append((float(r["Latitude"]), float(r["Longitude"])))
+        reg["checklists"] += r["Checklists"]
+        reg["species"] |= r["_species"]
+        reg["sites"] += 1
+    region_rows = []
+    for key, reg in regions.items():
+        species = len(reg["species"])
+        region_rows.append({
+            "Name": region_names[key],
+            "Description": f"{species} species · {reg['sites']} sites · {reg['checklists']} checklists",
+            "Latitude": f"{sum(c[0] for c in reg['coords']) / len(reg['coords']):.6f}",
+            "Longitude": f"{sum(c[1] for c in reg['coords']) / len(reg['coords']):.6f}",
+            "Country": "China (中国)",
+            "Province": "",
+            "Region": f"China · {key}",
+            "Checklists": reg["checklists"],
+            "Species": species,
+            "Species Bucket": bucket_species(species),
+            "Visit Bucket": bucket_visits(reg["checklists"]),
+        })
+    region_rows.sort(key=lambda r: -r["Species"])
+    write_csv(out / "regions-china.csv", region_rows)
+
     countries = defaultdict(lambda: {"coords": [], "checklists": 0, "species": set(), "sites": 0})
     for r in rows:
         c = countries[r["Country"]]
@@ -251,6 +291,7 @@ def main() -> None:
         })
     country_rows.sort(key=lambda r: -r["Species"])
     write_csv(out / "countries.csv", country_rows)
+    write_csv(out / "countries-international.csv", [r for r in country_rows if r["Name"] != "China (中国)"])
 
     print("\nTotals:")
     print(f"  checklists: {n_checklists}")
